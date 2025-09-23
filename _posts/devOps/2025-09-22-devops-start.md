@@ -5,12 +5,9 @@ date: 2025-09-22 23:54:00 +0900
 categories: [DevOps] 
 tags: [overview]
 ---
+## 서론
 
-개념에 해당하는 부분만 정리(구현X 추상화O 라는 뜻ㅎ)
-<br><br>
-
-# 회사 아키텍처 흐름 이해하기
-
+---
 &nbsp; 내가 담당하는 서비스의 스펙은 다음과 같았다.
 - 언어: Java, PHP
 - DB: Altibase, MySQL, Elasticsearch, Redis
@@ -51,19 +48,17 @@ tags: [overview]
 
 ---
 &nbsp; GitLab 이 해당 파일을 읽어 해야할 작업(Job)을 정의한다.
-해당 Job을 실행할 수 있는 Runner가 `.gitlab-ci.yml`에 정의된 빌드, 테스트, 배포 스크립트를 실행 후 결과를 반환한다.
+해당 Job을 실행할 수 있는 Runner가 `.gitlab-ci.yml`에 정의된 빌드, 테스트, 배포 스크립트를 실행 후 로그와 성공 여부를 반환한다.
 
 &nbsp; GitLab은 SaaS 형태로도 제공되지만, 기업 내부망에 직접 설치해서 사용하는 On-premise 방식으로도 제공된다.
 SaaS의 경우 GitLab에서 기본적으로 제공하는 Shared Runner를 사용할 수 있지만, 우리는 내부망에 설치했기 때문에 Runner 따로 설치해 사용한다.
 
-회사의 파이프라인은 대략 다음과 같다.
-- 테스트
+회사의 `.gitlab-ci.yml`에 정의된 파이프라인은 대략 다음과 같다.
+- Test
 - Gradle Build
 - Docker BUild
-- Harbor에 push
+  - Harbor에 push
 - Manifest 프로젝트에 Push
-  - ArgoCD가 이를 감지해 재배포하게된다.
-
 
 ## 2. Harbor: "사내 이미지 저장소"
 

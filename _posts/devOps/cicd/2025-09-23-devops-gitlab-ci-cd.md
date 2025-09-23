@@ -5,11 +5,6 @@ date: 2025-09-23 00:17:00 +0900
 categories: [DevOps,CI/CD]
 tags: [gitLab-ci/cd,GitLab]
 ---
-
-GitLab cicd를 공부하면, Github Action도 쉽게 파악할 수 있기를 기대합니다.ㅎ
-<br><br>
-
-# GitLab CI/CD
 &nbsp; GitLab 서버에서 해야하는 작업은 `.gitlab-ci.yml`, 실제 작업하는 Runner의 스펙은 `config.toml`에 정의한다.
 
 
