@@ -11,7 +11,7 @@ tags: [overview]
 &nbsp; 내가 담당하는 서비스의 스펙은 다음과 같았다.
 - 언어: Java, PHP
 - DB: Altibase, MySQL, Elasticsearch, Redis
-- 스케쥴: Crontab, Java 스케쥴링
+- 스케줄: Crontab, Java 스케줄링
 - 메시징: RabbitMQ
 - CI/CD: Shell Script, Jenkins(수동 빌드)
 - 환경: Linux
@@ -29,7 +29,7 @@ tags: [overview]
 
 &nbsp; 하울의 움직이는 성과 다를 바가 없다.
 이 때문에 신규 입사자(2년 차 = 나ㅋ)는 수많은 규칙과 꼬여 있는 정책을 이해하느라 진이 빠진다. 
-새로오신 본부장님은 이 성을 더 발전시키는 건 불가능 하다고 보시고, 완전히 갈아 엎자는 목표를 세우셨다.
+새로 오신 본부장님은 이 성을 더 발전시키는 건 불가능하다고 보시고, 완전히 갈아 엎자는 목표를 세우셨다.
 
 인프라 관련 신규 스펙은 다음과 같다.
 - CI/CD: GitLab CI/CD, ArgoCD
@@ -50,17 +50,27 @@ tags: [overview]
 &nbsp; GitLab 이 해당 파일을 읽어 해야할 작업(Job)을 정의한다.
 해당 Job을 실행할 수 있는 Runner가 `.gitlab-ci.yml`에 정의된 빌드, 테스트, 배포 스크립트를 실행 후 로그와 성공 여부를 반환한다.
 
-&nbsp; GitLab은 SaaS 형태로도 제공되지만, 기업 내부망에 직접 설치해서 사용하는 On-premise 방식으로도 제공된다.
+&nbsp; GitLab은 SaaS 형태로도 제공되지만, 기업 내부망에 직접 설치해서 사용하는 On-premises 방식으로도 제공된다.
 SaaS의 경우 GitLab에서 기본적으로 제공하는 Shared Runner를 사용할 수 있지만, 우리는 내부망에 설치했기 때문에 Runner 따로 설치해 사용한다.
 
 회사의 `.gitlab-ci.yml`에 정의된 파이프라인은 대략 다음과 같다.
 - Test
 - Gradle Build
-- Docker BUild
+- Docker Build
   - Harbor에 push
 - Manifest 프로젝트에 Push
+
+<br>
 
 ## 2. Harbor: "사내 이미지 저장소"
 
 ---
-내부 컨테이너 이미지 레지스트리 (Docker Hub 같은 역할)
+&nbsp; Harbor는 컨테이너 이미지 레지스트리 소프트웨어로, Docker Hub 역할을 한다고 볼 수 있다.
+구축하는 방법이 있지만 개발자는 사용만 해도 무방할 듯 하고, 여기서는 사내에서 프라이빗하게 도커 이미지 레지스트리로 많이 사용한다는 점만 알고 넘어가자.
+
+&nbsp; Runner는 변경된 소스를 포함한 이미지를 Harbor에 push 한다.
+
+## 3. 
+
+
+

@@ -1,9 +1,9 @@
 ---
 layout: post  
-title: "[GitLab CI/CD] GitLab start"  
+title: "[GitLab-CI/CD] GitLab start"  
 date: 2025-09-23 00:17:00 +0900
-categories: [DevOps,CI/CD]
-tags: [gitLab-ci/cd,GitLab]
+categories: [DevOps, CI/CD]
+tags: [ci/cd-tools, gitlab-ci/cd]
 ---
 &nbsp; GitLab 서버에서 해야하는 작업은 `.gitlab-ci.yml`, 실제 작업하는 Runner의 스펙은 `config.toml`에 정의한다.
 
@@ -11,7 +11,7 @@ tags: [gitLab-ci/cd,GitLab]
 ## GitLab 서버
 
 ---
-&nbsp; GitLab은 SaaS 형태로도 제공되고, 기업 내부망에 직접 설치해서 사용하는 On-premise 방식으로도 제공된다.
+&nbsp; GitLab은 SaaS 형태로도 제공되고, 기업 내부망에 직접 설치해서 사용하는 On-premises 방식으로도 제공된다.
 SaaS의 경우 GitLab에서 기본적으로 제공하는 Shared Runner를 바로 사용할 수 있고, On-premise는 Runner를 직접 설치하고 등록해야한다.
 
 &nbsp; Gitlab 저장소에 `.gitlab-ci.yml`을 포함한 소스를 push하면, GitLab이 해당 파일을 읽어 CI/CD 파이프라인을 트리거한다.
