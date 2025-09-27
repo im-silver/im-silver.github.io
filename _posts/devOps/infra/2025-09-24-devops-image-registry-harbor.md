@@ -10,7 +10,7 @@ tags: [image-registry, harbor]
 ## Harbor?
 
 ---
-&nbsp; Harbor는 컨테이너 이미지 레지스트리 소프트웨어로, Docker Hub 역할을 한다고 볼 수 있다.
+&nbsp; Harbor는 OCI 호환 컨테이너 레지스트리 소프트웨어로, Docker Hub 역할을 한다고 볼 수 있다.
 보통 사내에서 프라이빗하게 도커 이미지 레지스트리로 많이 사용한다.
 
 &nbsp; 하나의 프로그램이 아니라 여러 컨테이너로 구성되어 있는데, 컨테이너 이미지들은 Docker Hub에 `goharbor/*` 형태로 공개되어 있다.
@@ -71,7 +71,7 @@ tags: [image-registry, harbor]
    helm repo add goharbor https://helm.goharbor.io
    helm repo update
    ```
-   - helm 차트는 보통 <repo alias>/<chart name> 형식을 따른다. 해당 repo 별칭을 goharbor로 지정했다.
+   - helm 차트는 보통 `<repo alias>/<chart name>` 형식을 따른다. 해당 repo 별칭을 goharbor로 지정했다.
    - 이제 goharbor/harbor를 통해 harbor repository에서 harbor chart를 내려받을 수 있다. <br>
 2. Helm 및 K8s 설정
    - values.yml 수정
@@ -81,10 +81,11 @@ tags: [image-registry, harbor]
      - ex. `kubectl create namespace harbor`
 3. Helm Chart로 Harbor 설치
    ```shell
-   helm install [k8s 생성될 release 명] goharbor/harbor -n harbor -f my-values.yaml
+   helm install <RELEASE_NAME> goharbor/harbor -n harbor -f my-values.yaml
    ```
    - 최종 Kubernetes manifest(Deployment, Service, PVC 등)를 생성
    - manifest에 정의된 Docker Hub의 goharbor/ 이미지를 내려받아 Pod 실행
+   - `<RELEASE_NAME>`: K8S에 생성될 릴리즈(Chart + Values를 조합해서 실제 클러스터에 배포한 결과물)명
 4. 설치 확인 및 접속 확인
 
 <br>
@@ -92,3 +93,71 @@ tags: [image-registry, harbor]
 ## 사용
 
 ---
+
+### push
+
+1. 로그인
+  ```shell
+   docker login harbor.mycorp.com -u im-silver
+  ```
+  - Harbor는 Docker Registry v2 API + OCI Distribution Spec을 준수
+  - port는 기본적으로 443(HTTPS), 80(HTTP)이 할당
+
+
+2. 이미지 push
+  ```shell
+  # 이미지에 push할 수 있는 태그 추가
+  docker tag myapp:1.0 harbor.mycorp.com/myproject/myapp:1.0
+  
+  # push
+  docker push harbor.mycorp.com/myproject/myapp:1.0
+  ```
+  - docker는 registry에 push 하려면 이미지 태그명이 다음 형식을 따라야 한다.
+    - <registry>/<namespace or project>/<image>:<tag>
+  - 태그 추가 후, push 할 수 있다.
+
+<br>
+
+### pull
+
+1. 쿠버네티스에서 pull
+- Deployment 예시 (imagePullSecrets 필요):
+  ```yml
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+  name: myapp
+  spec:
+  replicas: 2
+  template:
+  spec:
+  containers:
+  - name: myapp
+  image: harbor.mycorp.com/myproject/myapp:1.0
+  imagePullSecrets:
+  - name: harbor-cred
+  
+  ```
+- Secret 생성:
+  ```shell
+  kubectl create secret docker-registry harbor-cred \
+  --docker-server=harbor.mycorp.com \
+  --docker-username=<user> \
+  --docker-password=<pass> \
+  --docker-email=<email>
+  ```
+4. CI/CD 연동
+
+- GitLab CI/CD
+  ```yaml
+  build:
+  stage: build
+  script:
+  - docker login -u "$HARBOR_USER" -p "$HARBOR_PASS" harbor.mycorp.com
+  - docker build -t harbor.mycorp.com/myproject/myapp:$CI_COMMIT_SHA .
+  - docker push harbor.mycorp.com/myproject/myapp:$CI_COMMIT_SHA
+  ```
+
+---
+
+
