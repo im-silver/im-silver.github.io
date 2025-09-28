@@ -59,7 +59,7 @@ SaaS의 경우 GitLab에서 기본적으로 제공하는 Shared Runner를 사용
 - Docker Build
   - Harbor에 push
 - Manifest 프로젝트에 Push
-
+  - Kubernetes 배포용 YAML/Helm 차트(Kubernetes Manifest)
 <br>
 
 ## 2. Harbor: "사내 이미지 저장소"
@@ -70,7 +70,11 @@ SaaS의 경우 GitLab에서 기본적으로 제공하는 Shared Runner를 사용
 
 &nbsp; Runner는 변경된 소스를 포함한 이미지를 Harbor에 push 한다.
 
-## 3. 
+## 3. Manifest: "이미지 메타데이터 파일"
 
+---
+메니페스트는 컨텍스트마다 조금씩 다르다.
 
+Kubernetes에서는 클러스터에 배포할 리소스의 상태를 말하고, Docker/OCI에서는 컨테이너 이미지 자체의 메타데이터를 말한다.
 
+Deployment.yaml 안의 이미지 태그가 Docker/OCI Manifest를 참조한다고 생각하면 이해가 쉬움

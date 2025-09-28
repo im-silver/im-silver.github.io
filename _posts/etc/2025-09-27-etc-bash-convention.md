@@ -31,9 +31,11 @@ ls [-al] [FILE...]
 &nbsp; 생각 없이 보면서 사람 취향따라 바뀐다고 생각했다.
 하지만 안일한 생각이었고? 가독성을 위해 컨벤션을 지켜 글을 작성하고자 한다.
 
+<br>
 
 ## 대문자 vs 소문자
 
+---
 - 대문자: 사용자가 꼭 바꿔 넣어야 하는 PLACEHOLDER (Upper Snake Case)
   - ex. `git commit -m "MESSAGE"`
 - 소문자: 실제 값이 소문자로 많이 쓰이거나 일반적인 이름
@@ -55,9 +57,11 @@ ls [-al] [FILE...]
 
 따라서, `helm install <RELEASE_NAME> <chart>`이런 식으로 정리하겠다.
 
+<br>
 
 ## 표기법
 
+---
 | 표기법      | 의미        | 예시 (문법)                                  | 예시 (실제 사용)                               | 
 |----------|-----------|------------------------------------------|------------------------------------------| 
 | `< >`    | 필수 인자     | `helm install <RELEASE_NAME> <chart>`    | `helm install my-harbor goharbor/harbor` | 
