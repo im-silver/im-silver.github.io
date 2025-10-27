@@ -60,6 +60,7 @@ SaaS의 경우 GitLab에서 기본적으로 제공하는 Shared Runner를 사용
   - Harbor에 push
 - Manifest 프로젝트에 Push
   - Kubernetes 배포용 YAML/Helm 차트(Kubernetes Manifest)
+
 <br>
 
 ## 2. Harbor: "사내 이미지 저장소"
@@ -69,6 +70,8 @@ SaaS의 경우 GitLab에서 기본적으로 제공하는 Shared Runner를 사용
 구축하는 방법이 있지만 개발자는 사용만 해도 무방할 듯 하고, 여기서는 사내에서 프라이빗하게 도커 이미지 레지스트리로 많이 사용한다는 점만 알고 넘어가자.
 
 &nbsp; Runner는 변경된 소스를 포함한 이미지를 Harbor에 push 한다.
+
+<br>
 
 ## 3. Manifest: "이미지 메타데이터 파일"
 
