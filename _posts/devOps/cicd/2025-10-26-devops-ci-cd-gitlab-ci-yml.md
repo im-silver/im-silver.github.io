@@ -7,6 +7,18 @@ tags: [ ci/cd-tools, gitlab-ci/cd ]
 ---
 
 
+
+기본적인 개념이 정리 되었으면, 공식 문서에서 참조할 수 있다.
+
+
+https://docs.gitlab.com/
+
+
+
+## 전체 흐름: 루트 `.gitlab-yml`
+
+---
+
 &nbsp; 크게 전체 흐름(Pipeline)과 각 작업(Job)을 정의할 수 있다.
 
 
@@ -18,10 +30,8 @@ tags: [ ci/cd-tools, gitlab-ci/cd ]
 
 <br>
 
-## 전체 흐름: 루트 `.gitlab-yml`
-
----
-
+> 사내 클러스터에서 Istio + Squid로 외부 접근이 제한된 경우,  
+root CI에 설정해 HTTP/HTTPS proxy 환경 변수를 통해서만 외부 패키지 및 이미지 다운로드가 가능하다.
 
 
 
@@ -66,7 +76,7 @@ tags: [ ci/cd-tools, gitlab-ci/cd ]
 - root `.gitlab-ci.yml`에 정의한다
 - `stages` 순서 정의는 필수, 나머지는 필요에 따라 선택적
 - `include` 는 같은 이름의 job이 다른 설정을 가지고 있으면 override 함.
-- 
+
 | 옵션                               | 설명                                                        |
 |----------------------------------|-----------------------------------------------------------|
 | `stages`                         | Pipeline에 존재하는 stage 순서 정의                                |

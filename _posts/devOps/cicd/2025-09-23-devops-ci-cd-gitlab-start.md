@@ -45,6 +45,10 @@ Runner가 “할 일 있으면 주세요” 하고 GitLab Server에 물어보는
 | `docker+machine` | 필요 시 새로운 VM을 자동 생성 후, 그 VM 안에서 Docker 컨테이너 실행 |
 | `kubernetes`     | 쿠버네티스 클러스터에 Pod을 생성해서 Job 실행                  |
 
+
+> k8s executor 기반 GitLab Runner에서는 Job 컨테이너에 Docker daemon이 자동 제공되지 않으며,  
+> buildx 사용 시 privileged 권한 확보 후 dockerd를 수동 기동해야 한다.
+
 <br>
 
 ## GitLab Runner: "인부"
