@@ -3,10 +3,10 @@ layout: post
 title: "[Harbor] 구축하려면 helm을 알아야 하네요"
 date: 2025-09-24 23:53:38 +0900
 categories: [ DevOps, infra ]
-tags: [ image-registry, harbor ]
+tags: [ image-registry, concept ]
 ---
 
-사실 Harbor는 구축까지 깊게 팔 필요는 없을 것 같읍니다. But, Helm/k8s 예습할 겸 정리해보겠습니다.
+사실 Harbor는 구축까지 깊게 팔 필요는 없을 것 같읍니다. Helm/k8s 예습할 겸 정리해보겠습니다.
 
 <br>
 

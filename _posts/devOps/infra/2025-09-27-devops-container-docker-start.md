@@ -3,7 +3,7 @@ layout: post
 title: "[Docker] 백엔드는 언어라면, 인프라는 도커,,"
 date: 2025-09-27 16:18:01 +0900
 categories: [DevOps, infra]
-tags: [container, docker]
+tags: [container]
 ---
 
 ## OCI? 런타임과 레지스트리가 호환 가능하게 해준 햄들

@@ -2,16 +2,14 @@
 layout: post
 title: "[Gitlab-CI/CD] gitlab-ci.yml 작성하기"
 date: 2025-10-26 15:07:29 +0900
-categories: [ Devops, CI/CD ]
-tags: [ ci/cd-tools, gitlab-ci/cd ]
+categories: [ DevOps, CI/CD ]
+tags: [ ci/cd-tools ]
 ---
 
 
 
-기본적인 개념이 정리 되었으면, 공식 문서에서 참조할 수 있다.
+> 기본적인 개념이 정리 되었으면, [공식 문서](https://docs.gitlab.com/)에서 참고할 수 있다.
 
-
-https://docs.gitlab.com/
 
 
 

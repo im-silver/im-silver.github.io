@@ -2,8 +2,8 @@
 layout: post
 title: "[Gitlab-CI/CD] gitlab-ci 잘 활용하기"
 date: 2025-10-26 15:56:10 +0900
-categories: [ Devops, CI/CD ]
-tags: [ ci/cd-tools, gitlab-ci/cd, tip ]
+categories: [ DevOps, CI/CD ]
+tags: [ ci/cd-tools, tip ]
 ---
 
 실무용 포인트

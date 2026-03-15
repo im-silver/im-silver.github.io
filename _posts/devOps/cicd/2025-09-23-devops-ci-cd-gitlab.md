@@ -3,7 +3,7 @@ layout: post
 title: "[GitLab-CI/CD] GitLab start"
 date: 2025-09-23 00:17:00 +0900
 categories: [ DevOps, CI/CD ]
-tags: [ ci/cd-tools, gitlab-ci/cd ]
+tags: [ ci/cd-tools, concept ]
 ---
 
 &nbsp; GitLab 서버에 해야하는 작업은 `.gitlab-ci.yml`로 정의한다. 실제 작업하는 Runner의 설정과 Job 실행 환경은 `config.toml`에 정의한다.
